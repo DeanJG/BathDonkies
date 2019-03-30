@@ -1,4 +1,19 @@
-/**  create authentication page
+// Initialize Firebase
+const config = {
+    apiKey: "AIzaSyACZRFDd5HaZN_CloDFXSg1ILLZdWIrc8g",
+    authDomain: "testproject1-39f23.firebaseapp.com",
+    databaseURL: "https://testproject1-39f23.firebaseio.com",
+    projectId: "testproject1-39f23",
+    storageBucket: "testproject1-39f23.appspot.com",
+    messagingSenderId: "629671921712"
+};
+firebase.initializeApp(config);
+
+const db = firebase.firestore()
+// const auth = firebase.auth()
+
+
+/**  create authentication pagehi
     when they move on from authenitcation page, set display : none
     
 Move on to location page: set display of entering location/city  
@@ -51,3 +66,54 @@ Ambitions:
     Add in preferences for user to choose what type of restaurants they want to see/match with 
     Cool features with the Kanye West API 
 **/
+
+// for initial location entry, note the necessity of location services
+// then, only use current lat/long if location field is empty
+
+// current location coords generator
+navigator.geolocation.getCurrentPosition((position) => {
+    const { latitude, longitude } = position.coords
+    console.log('latitude: ', latitude, 'longitude: ', longitude)
+
+
+    // from location tag
+
+    // user's location
+    let lat1 = latitude,
+        lon1 = longitude
+        //destination's location(85 degrees bakery in DJ as example) 
+        // lat2 = 33.6880095831667,
+        // lon2 = -117.834029372422;
+    // to grab location from API
+    fetch(`https://cors-anywhere.herokuapp.com/https://api.yelp.com/v3/businesses/search?latitude=${lat1}&longitude=${lon1}`, {
+        headers: {
+            "Authorization": "Bearer CYpONbq3tuPRivns5oh_FenCfkuVArzigVu7ay4XjSaw1vOOZjWIgvQ7lPiyMRvXF2vlajmHLfHWqCUCBAKPVssu1NVAfDhuv9cHwFNwz8rgYI4W5FIg2DRY-CWcXHYx"
+        }
+    })
+        .then(r => r.json())
+        .then(r => {
+            let { latitude: lat2, longitude: lon2 } = r.businesses[2].coordinates
+
+            // Formula used for "x miles away" location tag
+            // needed to manufacture a way to convert to radians
+            let pi = Math.PI
+            const toRadians = (numInDegrees) => {
+                return numInDegrees * (pi / 180)
+            }
+            // barely modified formula from movable-type-scripts article
+            let R = 3958.8
+            let φ1 = toRadians(lat1)
+            let φ2 = toRadians(lat2)
+            let Δφ = toRadians((lat2 - lat1))
+            let Δλ = toRadians((lon2 - lon1))
+
+            let a = Math.sin(Δφ / 2) * Math.sin(Δφ / 2) + Math.cos(φ1) * Math.cos(φ2) * Math.sin(Δλ / 2) * Math.sin(Δλ / 2)
+
+            let c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a))
+
+            let d = R * c
+
+            console.log(`~ ${Math.round(d)} Miles Away`)
+        })
+        .catch(e => console.error(e))
+})
