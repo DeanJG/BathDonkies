@@ -13,7 +13,7 @@ const db = firebase.firestore()
 // const auth = firebase.auth()
 
 
-/**  create authentication pagehi
+/**  create authentication page
     when they move on from authenitcation page, set display : none
     
 Move on to location page: set display of entering location/city  
@@ -81,10 +81,7 @@ navigator.geolocation.getCurrentPosition((position) => {
     // user's location
     let lat1 = latitude,
         lon1 = longitude
-        //destination's location(85 degrees bakery in DJ as example) 
-        // lat2 = 33.6880095831667,
-        // lon2 = -117.834029372422;
-    // to grab location from API
+    // to grab restaurant location from API
     fetch(`https://cors-anywhere.herokuapp.com/https://api.yelp.com/v3/businesses/search?latitude=${lat1}&longitude=${lon1}`, {
         headers: {
             "Authorization": "Bearer CYpONbq3tuPRivns5oh_FenCfkuVArzigVu7ay4XjSaw1vOOZjWIgvQ7lPiyMRvXF2vlajmHLfHWqCUCBAKPVssu1NVAfDhuv9cHwFNwz8rgYI4W5FIg2DRY-CWcXHYx"
@@ -92,7 +89,11 @@ navigator.geolocation.getCurrentPosition((position) => {
     })
         .then(r => r.json())
         .then(r => {
-            let { latitude: lat2, longitude: lon2 } = r.businesses[2].coordinates
+            // random number generator for restaurant selection
+            let randRest = Math.floor(Math.random() * r.businesses.length)
+            console.log(randRest)
+            // pulling coordinates for destination
+            let { latitude: lat2, longitude: lon2 } = r.businesses[randRest].coordinates
 
             // Formula used for "x miles away" location tag
             // needed to manufacture a way to convert to radians
@@ -113,7 +114,28 @@ navigator.geolocation.getCurrentPosition((position) => {
 
             let d = R * c
 
-            console.log(`~ ${Math.round(d)} Miles Away`)
+            console.log(`${r.businesses[randRest].name} is ~ ${Math.round(d)} Miles Away`)
+            console.log(r)
+            // .map returns a new array for us 
+            // .join(' ') joins array and separates with a space
+            const categories = r.businesses[randRest].categories
+                .map(category => category.title)
+                .join(' ')
+
+            document.querySelector('.card-type').textContent = `Type of food: ${categories}`
+
+            // the url button to work
+            const url = r.businesses[randRest].url
+            window.location = url
         })
         .catch(e => console.error(e))
+})
+
+// kanye west API key fetch
+fetch(`https://api.kanye.rest`) 
+.then(r => r.json())
+.then(r => {
+    // console log r to show random quote from kanye west
+    // console.log(r)
+    document.querySelector('#section').textContent = `Kanye's food for thought : ${r.quote}` 
 })
