@@ -115,7 +115,20 @@ navigator.geolocation.getCurrentPosition((position) => {
             let d = R * c
 
             console.log(`${r.businesses[randRest].name} is ~ ${Math.round(d)} Miles Away`)
-        
+
+
+            document.getElementById('restImage').src =`${r.businesses[randRest].image_url}`
+
+            document.querySelector('.card-title').textContent=`${r.businesses[randRest].name}`
+
+            document.querySelector('.card-price').textContent=`${r.businesses[randRest].price}`
+
+            document.querySelector('.card-transaction').textContent=`${r.businesses[randRest].transactions}`
+
+            // the url button to work
+            const url = r.businesses[randRest].url
+            window.location = url
+
         })
         .catch(e => console.error(e))
 })
