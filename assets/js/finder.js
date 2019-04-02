@@ -115,6 +115,7 @@ navigator.geolocation.getCurrentPosition((position) => {
             let d = R * c
 
             console.log(`${r.businesses[randRest].name} is ~ ${Math.round(d)} Miles Away`)
+
             console.log(r)
             // .map returns a new array for us 
             // .join(' ') joins array and separates with a space
@@ -124,12 +125,23 @@ navigator.geolocation.getCurrentPosition((position) => {
 
             document.querySelector('.card-type').textContent = `Type of food: ${categories}`
 
+
+            document.getElementById('restImage').src =`${r.businesses[randRest].image_url}`
+
+            document.querySelector('.card-title').textContent=`${r.businesses[randRest].name}`
+
+            document.querySelector('.card-price').textContent=`${r.businesses[randRest].price}`
+
+            document.querySelector('.card-transaction').textContent=`${r.businesses[randRest].transactions}`
+
             // the url button to work
             const url = r.businesses[randRest].url
             window.location = url
+
         })
         .catch(e => console.error(e))
 })
+
 
 // kanye west API key fetch
 fetch(`https://api.kanye.rest`) 
@@ -139,3 +151,6 @@ fetch(`https://api.kanye.rest`)
     // console.log(r)
     document.querySelector('#section').textContent = `Kanye's food for thought : ${r.quote}` 
 })
+
+// fetching Yelp API
+
