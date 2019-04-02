@@ -121,9 +121,31 @@ navigator.geolocation.getCurrentPosition((position) => {
                 } else {
                     console.log(`${r.businesses[randRest].name} is ~ ${Math.round(d)} Miles Away`)
                 }
+                document.getElementById('restImage').src = `${r.businesses[randRest].image_url}`
+                document.querySelector('.card-title').textContent = `${r.businesses[randRest].name}`
+                document.querySelector('.card-price').textContent = `${r.businesses[randRest].price}`
+                document.querySelector('.card-transaction').textContent = `${r.businesses[randRest].transactions}`
+
+                // .map returns a new array for us 
+                // .join(' ') joins array and separates with a space
+                const categories = r.businesses[randRest].categories
+                    .map(category => category.title)
+                    .join(' ')
+
+                document.querySelector('.card-type').textContent = `Type of food: ${categories}`
+
+                document.getElementById("buttonUrl").onclick = function () {
+                    location.href = (r.businesses[randRest].url)
+                }
             }
         })
         .catch(e => console.error(e))
 })
-
-// fetching Yelp API
+// kanye west API key fetch
+fetch(`https://api.kanye.rest`) 
+.then(r => r.json())
+.then(r => {
+    // console log r to show random quote from kanye west
+    // console.log(r)
+    document.querySelector('#section').textContent = `Kanye's food for thought : ${r.quote}` 
+})
