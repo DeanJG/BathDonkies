@@ -29,17 +29,65 @@ Ambitions:
 
 // Initialize Firebase
 const config = {
-    apiKey: "AIzaSyACZRFDd5HaZN_CloDFXSg1ILLZdWIrc8g",
-    authDomain: "testproject1-39f23.firebaseapp.com",
-    databaseURL: "https://testproject1-39f23.firebaseio.com",
-    projectId: "testproject1-39f23",
-    storageBucket: "testproject1-39f23.appspot.com",
-    messagingSenderId: "629671921712"
+    apiKey: "AIzaSyBXbVZnjOTHkSxkaB5ni4BM5T-xp8ghizQ",
+    authDomain: "firstproject-1a761.firebaseapp.com",
+    databaseURL: "https://firstproject-1a761.firebaseio.com",
+    projectId: "firstproject-1a761",
+    storageBucket: "firstproject-1a761.appspot.com",
+    messagingSenderId: "1003282022340"
 };
 firebase.initializeApp(config);
 
-const db = firebase.firestore()
+let db = firebase.firestore()
+document.getElementById('addToFavorites').addEventListener('click', e => {
+    e.preventDefault()
+
+    //adding to firebase favorite
+    db.collection("Favorites").doc(document.querySelector('.card-title').textContent).set({
+        name: document.querySelector('.card-title').textContent,
+        typeoffood: document.querySelector('.card-type').textContent,
+        dollars: document.querySelector('.card-price').textContent,
+        transaction: document.querySelector('.card-transaction').textContent,
+        telephone: document.querySelector('.card-telephone').textContent,
+        url: document.querySelector('.card-url').textContent,
+    })
+    .then(function() {
+        console.log("Document successfully written!");
+    })
+})
+
+//adding to firebase rejected
+document.getElementById('notFavorite').addEventListener('click', e => {
+    e.preventDefault()
+    db.collection("Dislikes").doc(document.querySelector('.card-title').textContent).set({
+        name: document.querySelector('.card-title').textContent,
+        typeoffood: document.querySelector('.card-type').textContent,
+        dollars: document.querySelector('.card-price').textContent,
+        transaction: document.querySelector('.card-transaction').textContent,
+        telephone: document.querySelector('.card-telephone').textContent,
+    })
+    .then(function() {
+        console.log("Document successfully written!");
+    })
+})
+    
+//showing favorites(dom)
+db.collection('Favorites').onSnapshot(({ docs }) => {
+    document.querySelector('.favorites').innerHTML = ''
+    docs.forEach(doc => {
+        let { name, dollars, transaction, typeoffood} = doc.data()
+        let docElem = document.createElement('div')
+        docElem.innerHTML = `
+            <h3>${name}</h3>
+            <h4>${dollars}</h4>
+            <h6>${transaction}</h6>
+            <h6>${typeoffood}</h6>
+            `
+        document.querySelector('.favorites').append(docElem)
+    })
+})
 // const auth = firebase.auth()
+
 
 //Variable Declaration//
 let coordinates = {}
@@ -103,6 +151,10 @@ const fetchNearbyBusinesses = (lat1, lon1) => {
                 document.querySelector('.card-title').textContent = `${r.businesses[randRest].name}`
                 document.querySelector('.card-price').textContent = `${r.businesses[randRest].price}`
                 document.querySelector('.card-transaction').textContent = `${r.businesses[randRest].transactions}`
+                document.querySelector('.card-telephone').textContent = `${r.businesses[randRest].display_phone}`
+                document.querySelector('.card-url').textContent = `${r.businesses[randRest].url}`
+
+
 
                 // .map returns a new array for us 
                 // .join(' ') joins array and separates with a space
@@ -154,6 +206,8 @@ const fetchNearbyBusinessesCity = (city, lat1, lon1) => {
             document.querySelector(".card-title").textContent = `${r.businesses[randRest].name}`
             document.querySelector(".card-price").textContent = `${r.businesses[randRest].price}`
             document.querySelector(".card-transaction").textContent = `${r.businesses[randRest].transactions}`
+            document.querySelector('.card-telephone').textContent = `${r.businesses[randRest].display_phone}`
+            document.querySelector('.card-url').textContent = `${r.businesses[randRest].url}`
 
             // .map returns a new array for us
             // .join(' ') joins array and separates with a space
@@ -212,5 +266,6 @@ fetch(`https://api.kanye.rest`)
 .then(r => {
     // console log r to show random quote from kanye west
     // console.log(r)
+
     document.querySelector('#section').textContent = `Kanye's Food For Thought : ${r.quote}` 
 })
