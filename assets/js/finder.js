@@ -130,42 +130,56 @@ const fetchNearbyBusinesses = (lat1, lon1) => {
         .then(r => r.json())
         .then(r => {
             // random number generator for restaurant selection
+            let counter = 0
+            const getRest = _ => {
             let randRest = Math.floor(Math.random() * r.businesses.length)
-            console.log(randRest)
+            let ratingThreshold = 2.5
+            let randBusiness = r.businesses[randRest]
+            counter++
+            if (randBusiness.rating >= ratingThreshold) {
+                return randBusiness
+            }else {
+                if (counter > r.businesses.length) {
+                return null
+                }
+                getRest()
+            }
+        }
+        const highRatedRest = getRest()
             // filter to display only 2.5+ rated restaraunts
-            if (r.businesses[randRest].rating >= 2.5) {
+            if (highRatedRest) {
                 // pulling coordinates for destination
-                let { latitude: lat2, longitude: lon2 } = r.businesses[randRest].coordinates
+                let { latitude: lat2, longitude: lon2 } = highRatedRest.coordinates
 
                 // Function used for "x miles away" location tag
                 const distance = distFunc(lat1, lon1, lat2, lon2)
 
                 if (distance < 1) {
                     // shows distance in decimals if between 0 and 1
-                    console.log(`${r.businesses[randRest].name} is ~ ${distance.toFixed(2)} Miles Away`)
+                    console.log(`${highRatedRest.name} is ~ ${distance.toFixed(2)} Miles Away`)
                 } else {
                     // shows rounded distance otherwise
-                    console.log(`${r.businesses[randRest].name} is ~ ${Math.round(distance)} Miles Away`)
+                    console.log(`${highRatedRest.name} is ~ ${Math.round(distance)} Miles Away`)
                 }
-                document.getElementById('restImage').src = `${r.businesses[randRest].image_url}`
-                document.querySelector('.card-title').textContent = `${r.businesses[randRest].name}`
-                document.querySelector('.card-price').textContent = `${r.businesses[randRest].price}`
-                document.querySelector('.card-transaction').textContent = `${r.businesses[randRest].transactions}`
-                document.querySelector('.card-telephone').textContent = `${r.businesses[randRest].display_phone}`
-                document.querySelector('.card-url').textContent = `${r.businesses[randRest].url}`
+                document.getElementById('restImage').src = `${highRatedRest.image_url}`
+                document.querySelector('.card-title').textContent = `${highRatedRest.name}`
+                document.querySelector('.card-price').textContent = `${highRatedRest.price}`
+                document.querySelector('.card-transaction').textContent = `${highRatedRest.transactions}`
+                document.querySelector('.card-telephone').textContent = `${highRatedRest.display_phone}`
+                document.querySelector('.card-url').textContent = `${highRatedRest.url}`
 
 
 
                 // .map returns a new array for us 
                 // .join(' ') joins array and separates with a space
-                const categories = r.businesses[randRest].categories
+                const categories = highRatedRest.categories
                     .map(category => category.title)
                     .join(' ')
 
                 document.querySelector('.card-type').textContent = `Type of food: ${categories}`
 
                 document.getElementById("buttonUrl").onclick = function () {
-                    location.href = (r.businesses[randRest].url)
+                    location.href = (highRatedRest.url)
                 }
             }
         })
@@ -185,37 +199,51 @@ const fetchNearbyBusinessesCity = (city, lat1, lon1) => {
     .then(r => r.json())
     .then(r => {
         // random number generator for restaurant selection
-        let randRest = Math.floor(Math.random() * r.businesses.length)
-        console.log(randRest);
+        let counter = 0
+        const getRest = _ => {
+            let randRest = Math.floor(Math.random() * r.businesses.length)
+            let ratingThreshold = 2.5
+            let randBusiness = r.businesses[randRest]
+            counter++
+            if (randBusiness.rating >= ratingThreshold) {
+                return randBusiness
+            }else {
+                if (counter > r.businesses.length) {
+                return null
+                }
+                getRest()
+            }
+        }
+        const highRatedRest = getRest()
         // filter to display only 2.5+ rated restaraunts
-        if (r.businesses[randRest].rating >= 2.5) {
+        if (highRatedRest) {
             // pulling coordinates for destination
-            let { latitude: lat2, longitude: lon2 } = r.businesses[randRest].coordinates
+            let { latitude: lat2, longitude: lon2 } = highRatedRest.coordinates
 
             // Function used for "x miles away" location tag
             const distance = distFunc(lat1, lon1, lat2, lon2)
 
             if (distance < 1) {
                 // shows distance in decimals if between 0 and 1
-                console.log(`${r.businesses[randRest].name} is ~ ${distance.toFixed(2)} Miles Away`)
+                console.log(`${highRatedRest.name} is ~ ${distance.toFixed(2)} Miles Away`)
             } else {
                 // shows rounded distance otherwise
-                console.log(`${r.businesses[randRest].name} is ~ ${Math.round(distance)} Miles Away`)
+                console.log(`${highRatedRest.name} is ~ ${Math.round(distance)} Miles Away`)
             }
-            document.getElementById("restImage").src = `${r.businesses[randRest].image_url}`
-            document.querySelector(".card-title").textContent = `${r.businesses[randRest].name}`
-            document.querySelector(".card-price").textContent = `${r.businesses[randRest].price}`
-            document.querySelector(".card-transaction").textContent = `${r.businesses[randRest].transactions}`
-            document.querySelector('.card-telephone').textContent = `${r.businesses[randRest].display_phone}`
-            document.querySelector('.card-url').textContent = `${r.businesses[randRest].url}`
+            document.getElementById("restImage").src = `${highRatedRest.image_url}`
+            document.querySelector(".card-title").textContent = `${highRatedRest.name}`
+            document.querySelector(".card-price").textContent = `${highRatedRest.price}`
+            document.querySelector(".card-transaction").textContent = `${highRatedRest.transactions}`
+            document.querySelector('.card-telephone').textContent = `${highRatedRest.display_phone}`
+            document.querySelector('.card-url').textContent = `${highRatedRest.url}`
 
             // .map returns a new array for us
             // .join(' ') joins array and separates with a space
-            const categories = r.businesses[randRest].categories.map(category => category.title).join(" ")
+            const categories = highRatedRest.categories.map(category => category.title).join(" ")
 
             document.querySelector(".card-type").textContent = `Type of food: ${categories}`
 
-            document.getElementById("buttonUrl").onclick = _ => {location.href = r.businesses[randRest].url}
+            document.getElementById("buttonUrl").onclick = _ => {location.href = highRatedRest.url}
         }
     })
     .catch(e => console.error(e))
