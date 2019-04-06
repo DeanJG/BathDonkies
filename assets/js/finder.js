@@ -269,3 +269,19 @@ fetch(`https://api.kanye.rest`)
 
     document.querySelector('#section').textContent = `Kanye's Food For Thought : ${r.quote}` 
 })
+
+
+
+
+// on click display/hide elements
+
+function dispFunction() {
+    var x = document.getElementById("myDIV");
+    if (x.style.display === "none") {
+      x.style.display = "block";
+    } else {
+      x.style.display = "none";
+    }
+  }
+
+
