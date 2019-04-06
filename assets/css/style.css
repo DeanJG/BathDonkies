@@ -30,10 +30,35 @@
     line-height: 1.42857;
 }
 
-/* #mainPage {
-    display:none;
-} */
 
- /* #locationPage {
-     display:none;
- } */
+
+/* sign in page */
+#LoginPage {
+    height: 200px;
+}
+
+
+/* location page */
+ #locationPage {
+    height: 200px;
+    display: none;
+} 
+
+/* Main Page showing randomized Restaurants */
+#mainPage {
+    height: 200px;
+    display: none;
+
+} 
+/* Favorites Page  */
+#favoritesPage {
+    height: 200px;
+    display: none;
+
+} 
+/* Inner Favorites Page */
+#innerFavoritesPage {
+    height: 200px;
+    display: none;
+
+} 
