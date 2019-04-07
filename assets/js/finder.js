@@ -259,6 +259,18 @@ document.getElementById('addToFavorites').addEventListener('click', e => {
     .then(function() {
         console.log("Document successfully written!");
     })
+    // reruns city/coords search functions on "Favorites" press
+    city = document.getElementById(`locationInput`).value
+
+    if (city === ``) {
+        console.log(`search coords`)
+        console.log(coordinates)
+        fetchNearbyBusinesses(coordinates.lat1, coordinates.lon1)
+    }else {
+        console.log(`search a city`)
+        console.log(`city`)
+        fetchNearbyBusinessesCity(city, coordinates.lat1, coordinates.lon1)
+    }
 })
 
 //adding to firebase rejected
@@ -275,6 +287,18 @@ document.getElementById('notFavorite').addEventListener('click', e => {
     .then(function() {
         console.log("Document successfully written!");
     })
+    // reruns city/coords search functions on "Dislike" press
+    city = document.getElementById(`locationInput`).value
+
+    if (city === ``) {
+        console.log(`search coords`)
+        console.log(coordinates)
+        fetchNearbyBusinesses(coordinates.lat1, coordinates.lon1)
+    }else {
+        console.log(`search a city`)
+        console.log(`city`)
+        fetchNearbyBusinessesCity(city, coordinates.lat1, coordinates.lon1)
+    }
 })
     
 //showing favorites(DOM)
