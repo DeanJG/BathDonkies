@@ -23,7 +23,7 @@
 <body>
 
   <!-- Login Page -->
-  <div class="container" id="LoginPage">
+  <div class="container" id="loginPage">
       <div class="row">
         <div id="navigation" class="col-sm-12 col-m-12 col-l-12">
         </div>
@@ -34,7 +34,7 @@
                 <input type="text" placeholder="User Name">
               <input type="text" placeholder="Password">
             </form>
-            <button class='login' onclick="dspFunction()">Login</button>
+            <button class='login' onclick="dispFunction()">Login</button>
           </div>
         </div>
       </div>
@@ -45,8 +45,8 @@
     <div class="row">
       <div id="navigation" class="col-sm-12 col-m-12 col-l-12">
         <nav class="navbar navbar-dark bg-dark">
-          <button><i class="fas fa-star"></i></button>
-          <button class="currentLocation"><i class="fas fa-map-marker-alt"></i></button>
+          <button onclick="dispFaves()" ><i class="fas fa-star"></i></button>
+          <button onclick="dispLocationPage()" class="currentLocation"><i class="fas fa-map-marker-alt"></i></button>
         </nav>
       </div>
       <div id="body" class="col-sm-12 col-m-12 col-l-12">
@@ -55,7 +55,7 @@
           <form type="text">
             <input type="text" id="locationInput" name="location" placeholder="Current Location">
           </form>
-          <button class="search">Lets Go</button>
+          <button class="search" onclick="dispMainPage()">Lets Go </button>
         </div>
       </div>
       <div id="footer" class="col-sm-12 col-m-12 col-l-12">
@@ -70,8 +70,8 @@
       <div class="row">
         <div id="navigation" class="col-sm-12 col-m-12 col-l-12">
           <nav class="navbar navbar-dark bg-dark">
-            <button><i class="fas fa-star"></i></button>
-            <button class="currentLocation"><i class="fas fa-map-marker-alt"></i></button>
+            <button onclick="dispFaves()"><i class="fas fa-star"></i></button>
+            <button onclick="dispLocationPage()" class="currentLocation"><i class="fas fa-map-marker-alt"></i></button>
           </nav>
           <div id="section" class="col-sm-12 col-m-12 col-l-12">
             <div id="kanyeQuote">
@@ -93,18 +93,20 @@
                 <button id="notFavorite" type="button" class="btn btn-warning btn-circle btn-xl"><i class="fa fa-times"></i></button>
                 <button id="addToFavorites" type="button" class="btn btn-danger btn-circle btn-xl"><i class="fa fa-heart"></i></button>
               </div>
-            </div>
+            <!-- </div> -->
           </div>
         </div>
       </div>
   </div>
+</div>
+
   <!-- Favorites Page -->
   <div class="container" id="favoritesPage">
     <div class="row">
       <div id="navigation" class="col-sm-12 col-m-12 col-l-12">
         <nav class="navbar navbar-dark bg-dark">
-          <button><i class="fas fa-star"></i></button>
-          <button class="currentLocation"><i class="fas fa-map-marker-alt"></i></button>
+          <button onclick="dispFaves()" ><i class="fas fa-star"></i></button>
+          <button onclick="dispLocationPage()" class="currentLocation"><i class="fas fa-map-marker-alt"></i></button>
         </nav>
       </div>
       <div id="body" class="col-sm-12 col-m-12 col-l-12">
@@ -120,8 +122,8 @@
     <div class="row">
       <div id="navigation" class="col-sm-12 col-m-12 col-l-12">
         <nav class="navbar navbar-dark bg-dark">
-          <button><i class="fas fa-star"></i></button>
-          <button class="currentLocation"><i class="fas fa-map-marker-alt"></i></button>
+          <button onclick="dispFaves()"><i class="fas fa-star"></i></button>
+          <button onclick="dispLocationPage()" class="currentLocation"><i class="fas fa-map-marker-alt"></i></button>
         </nav>
       </div>
       <div id="body" class="col-sm-12 col-m-12 col-l-12">
