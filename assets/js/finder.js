@@ -298,18 +298,34 @@ fetch(`https://api.kanye.rest`)
     document.querySelector('#section').textContent = `Kanye's Food For Thought : ${r.quote}` 
 })
 
+//////******************** Screen Toggle *//////
 
-
-
-// on click display/hide elements
-
+// login to location page
 function dispFunction() {
-    var x = document.getElementById("myDIV");
-    if (x.style.display === "none") {
-      x.style.display = "block";
-    } else {
-      x.style.display = "none";
-    }
-  }
+    //display
+    document.getElementById("locationPage").style.display = "block";
+    //hide
+    document.getElementById("loginPage").style.display = "none";
+}
 
+// display main page
+function dispMainPage() {
+    //display
+    document.getElementById("mainPage").style.display = "block";
+    // hide
+    document.getElementById("locationPage").style.display = "none";
+}
+// to favorites page
+function dispFaves() {
+    document.getElementById("favoritesPage").style.display = "block";
+    document.getElementById("mainPage").style.display = "none"; 
+    document.getElementById("locationPage").style.display = "none";
 
+}
+// back to location page
+function dispLocationPage() {
+    document.getElementById("locationPage").style.display = "block";
+    document.getElementById("mainPage").style.display = "none";
+    document.getElementById("favoritesPage").style.display = "none";
+
+}
