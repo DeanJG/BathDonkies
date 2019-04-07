@@ -39,53 +39,6 @@ const config = {
 firebase.initializeApp(config);
 
 let db = firebase.firestore()
-document.getElementById('addToFavorites').addEventListener('click', e => {
-    e.preventDefault()
-
-    //adding to firebase favorite
-    db.collection("Favorites").doc(document.querySelector('.card-title').textContent).set({
-        name: document.querySelector('.card-title').textContent,
-        typeoffood: document.querySelector('.card-type').textContent,
-        dollars: document.querySelector('.card-price').textContent,
-        transaction: document.querySelector('.card-transaction').textContent,
-        telephone: document.querySelector('.card-telephone').textContent,
-        url: document.querySelector('.card-url').textContent,
-    })
-    .then(function() {
-        console.log("Document successfully written!");
-    })
-})
-
-//adding to firebase rejected
-document.getElementById('notFavorite').addEventListener('click', e => {
-    e.preventDefault()
-    db.collection("Dislikes").doc(document.querySelector('.card-title').textContent).set({
-        name: document.querySelector('.card-title').textContent,
-        typeoffood: document.querySelector('.card-type').textContent,
-        dollars: document.querySelector('.card-price').textContent,
-        transaction: document.querySelector('.card-transaction').textContent,
-        telephone: document.querySelector('.card-telephone').textContent,
-    })
-    .then(function() {
-        console.log("Document successfully written!");
-    })
-})
-    
-//showing favorites(dom)
-db.collection('Favorites').onSnapshot(({ docs }) => {
-    document.querySelector('.favorites').innerHTML = ''
-    docs.forEach(doc => {
-        let { name, dollars, transaction, typeoffood} = doc.data()
-        let docElem = document.createElement('div')
-        docElem.innerHTML = `
-            <h3>${name}</h3>
-            <h4>${dollars}</h4>
-            <h6>${transaction}</h6>
-            <h6>${typeoffood}</h6>
-            `
-        document.querySelector('.favorites').append(docElem)
-    })
-})
 // const auth = firebase.auth()
 
 
@@ -288,6 +241,58 @@ document.querySelector('.search').addEventListener(`click`, e => {
         fetchNearbyBusinessesCity(city, coordinates.lat1, coordinates.lon1)
     }
 })
+
+// Firebase integration and favorites page visualization //
+
+//adding to firebase favorite
+document.getElementById('addToFavorites').addEventListener('click', e => {
+    e.preventDefault()
+
+    db.collection("Favorites").doc(document.querySelector('.card-title').textContent).set({
+        name: document.querySelector('.card-title').textContent,
+        typeoffood: document.querySelector('.card-type').textContent,
+        dollars: document.querySelector('.card-price').textContent,
+        transaction: document.querySelector('.card-transaction').textContent,
+        telephone: document.querySelector('.card-telephone').textContent,
+        url: document.querySelector('.card-url').textContent,
+    })
+    .then(function() {
+        console.log("Document successfully written!");
+    })
+})
+
+//adding to firebase rejected
+document.getElementById('notFavorite').addEventListener('click', e => {
+    e.preventDefault()
+
+    db.collection("Dislikes").doc(document.querySelector('.card-title').textContent).set({
+        name: document.querySelector('.card-title').textContent,
+        typeoffood: document.querySelector('.card-type').textContent,
+        dollars: document.querySelector('.card-price').textContent,
+        transaction: document.querySelector('.card-transaction').textContent,
+        telephone: document.querySelector('.card-telephone').textContent,
+    })
+    .then(function() {
+        console.log("Document successfully written!");
+    })
+})
+    
+//showing favorites(DOM)
+db.collection('Favorites').onSnapshot(({ docs }) => {
+    document.querySelector('.favorites').innerHTML = ''
+    docs.forEach(doc => {
+        let { name, dollars, transaction, typeoffood} = doc.data()
+        let docElem = document.createElement('div')
+        docElem.innerHTML = `
+            <h3>${name}</h3>
+            <h4>${dollars}</h4>
+            <h6>${transaction}</h6>
+            <h6>${typeoffood}</h6>
+            `
+        document.querySelector('.favorites').append(docElem)
+    })
+})
+
 // kanye west API key fetch
 fetch(`https://api.kanye.rest`) 
 .then(r => r.json())
