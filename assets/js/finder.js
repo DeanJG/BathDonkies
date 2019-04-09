@@ -335,6 +335,7 @@ function dispFunction() {
     document.getElementById("locationPage").style.display = "block";
     //hide
     document.getElementById("loginPage").style.display = "none";
+    
 }
 
 // display main page
