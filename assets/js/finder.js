@@ -141,9 +141,6 @@ const fetchNearbyBusinesses = (lat1, lon1) => {
 
                 document.querySelector('.card-type').textContent = `Type of food: ${categories}`
 
-                document.getElementById("buttonUrl").onclick = function () {
-                    location.href = (highRatedRest.url)
-                }
             }
         })
         .catch(e => console.error(e))
@@ -206,7 +203,6 @@ const fetchNearbyBusinessesCity = (city, lat1, lon1) => {
 
             document.querySelector(".card-type").textContent = `Type of food: ${categories}`
 
-            document.getElementById("buttonUrl").onclick = _ => {location.href = highRatedRest.url}
         }
     })
     .catch(e => console.error(e))
