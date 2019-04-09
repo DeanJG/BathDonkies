@@ -338,18 +338,16 @@ db.collection('Favorites').onSnapshot(({ docs }) => {
 
 // login to location page
 function dispFunction() {
-    //display
     document.getElementById("locationPage").style.display = "block";
-    //hide
     document.getElementById("loginPage").style.display = "none";
+    document.getElementById("navigation1").style.display = "none";
+    document.getElementById("navigation2").style.display = "block";
     
 }
 
 // display main page
 function dispMainPage() {
-    //display
     document.getElementById("mainPage").style.display = "block";
-    // hide
     document.getElementById("locationPage").style.display = "none";
 }
 // to favorites page
@@ -366,3 +364,6 @@ function dispLocationPage() {
     document.getElementById("favoritesPage").style.display = "none";
 
 }
+
+
+

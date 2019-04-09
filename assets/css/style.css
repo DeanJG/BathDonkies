@@ -41,7 +41,7 @@
 
 /* Login nav bar */
 #navigation1 {
-    display: none;
+    /* display: none; */
 }
 
 
@@ -140,7 +140,7 @@ input::placeholder{
 /* main nav bar */
 #navigation2 {
     padding: none;
-    /* display: none; */
+    display: none;
 
 }
 
@@ -187,8 +187,14 @@ text-align: center;
     letter-spacing: 1px;
     font-family: 'Poppins', sans-serif;
     font-weight: 600;
-    
 }
+
+#restImage {
+    height:150px;
+    object-fit:cover;
+}
+
+
 /* Favorites Page  */
 #favoritesPage {
     display: none;
@@ -212,3 +218,7 @@ text-align: center;
 #footerlogo{
     margin: 10px auto 10px 20px;
     }    
+
+
+
+
