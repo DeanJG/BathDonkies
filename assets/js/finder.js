@@ -27,6 +27,8 @@ Ambitions:
     Cool features with the Kanye West API 
 **/
 
+// heart animation
+/* when a user clicks, toggle the 'is-animating' class */
 $("#addToFavorites").on('click touchstart', function(){
     $(this).toggleClass('is_animating')
 })
@@ -57,6 +59,16 @@ let coordinates = {}
 
 
 //Function Declaration//
+
+// function to call Kanye quote
+const kanyeQuote = _ => {
+    fetch(`https://api.kanye.rest`)
+        .then(r => r.json())
+        .then(r => {
+
+            document.querySelector('#section').textContent = `Kanye's Food For Thought : ${r.quote}`
+        })
+}
 
 // Function used for "x miles away" location tag
 const distFunc = (lat1, lon1, lat2, lon2) => {
@@ -139,10 +151,6 @@ const fetchNearbyBusinesses = (lat1, lon1) => {
                     .join(' ')
 
                 document.querySelector('.card-type').textContent = `Type of food: ${categories}`
-
-                document.getElementById("buttonUrl").onclick = function () {
-                    location.href = (highRatedRest.url)
-                }
             }
         })
         .catch(e => console.error(e))
@@ -205,7 +213,6 @@ const fetchNearbyBusinessesCity = (city, lat1, lon1) => {
 
             document.querySelector(".card-type").textContent = `Type of food: ${categories}`
 
-            document.getElementById("buttonUrl").onclick = _ => {location.href = highRatedRest.url}
         }
     })
     .catch(e => console.error(e))
@@ -226,6 +233,13 @@ navigator.geolocation.getCurrentPosition((position) => {
     return coordinates
 })
 
+    // user's location
+    coordinates = {
+        lat1: latitude,
+        lon1: longitude
+    }
+    return coordinates
+})
 
 
 // prevents enter key default
@@ -240,13 +254,15 @@ document.querySelector('.search').addEventListener(`click`, e => {
     // // variable to house city input
     city = document.getElementById(`locationInput`).value
 
+    kanyeQuote()
+
     if (city === ``) {
         console.log(`search coords`)
         console.log(coordinates)
         fetchNearbyBusinesses(coordinates.lat1, coordinates.lon1)
     }else {
         console.log(`search a city`)
-        console.log(`city`)
+        console.log(`${city}`)
         fetchNearbyBusinessesCity(city, coordinates.lat1, coordinates.lon1)
     }
 })
@@ -257,7 +273,6 @@ document.querySelector('.search').addEventListener(`click`, e => {
 document.getElementById('addToFavorites').addEventListener('click', e => {
     e.preventDefault()
     document.querySelector("#heartImage").style.display = "block"
-    
     db.collection("Favorites").doc(document.querySelector('.card-title').textContent).set({
         name: document.querySelector('.card-title').textContent,
         typeoffood: document.querySelector('.card-type').textContent,
@@ -267,6 +282,7 @@ document.getElementById('addToFavorites').addEventListener('click', e => {
         url: document.querySelector('.card-url').textContent,
     })
     .then(function() {
+        //stops heart animation
         setTimeout(() => {
             document.querySelector("#heartImage").style.display = "none"
         }, 1000)
@@ -274,6 +290,8 @@ document.getElementById('addToFavorites').addEventListener('click', e => {
     })
     // reruns city/coords search functions on "Favorites" press
     city = document.getElementById(`locationInput`).value
+
+    kanyeQuote()
 
     if (city === ``) {
         console.log(`search coords`)
@@ -300,8 +318,10 @@ document.getElementById('notFavorite').addEventListener('click', e => {
     .then(function() {
         console.log("Document successfully written!");
     })
-    // reruns city/coords search functions on "Dislike" press
+    // reruns city/coords search and Kanye quote functions on "Dislike" press
     city = document.getElementById(`locationInput`).value
+
+    kanyeQuote()
 
     if (city === ``) {
         console.log(`search coords`)
@@ -318,29 +338,53 @@ document.getElementById('notFavorite').addEventListener('click', e => {
 db.collection('Favorites').onSnapshot(({ docs }) => {
     document.querySelector('.favorites').innerHTML = ''
     docs.forEach(doc => {
-        let { name, dollars, transaction, typeoffood} = doc.data()
-        let docElem = document.createElement('div')
+        let { name, dollars, typeoffood, url } = doc.data()
+        let docElem = document.createElement('button')
         docElem.innerHTML = `
+        <div class="favoritesDiv">
             <h3>${name}</h3>
-            <h4>${dollars}</h4>
-            <h6>${transaction}</h6>
-            <h6>${typeoffood}</h6>
+            <h4>${typeoffood}</h4>
+            <p>${dollars}</p>
+            <a href = "${url}"> GO HERE</a>
+            <hr>
+            </div>
             `
         document.querySelector('.favorites').append(docElem)
     })
 })
 
-// kanye west API key fetch
-fetch(`https://api.kanye.rest`) 
-.then(r => r.json())
-.then(r => {
-    // console log r to show random quote from kanye west
-    // console.log(r)
 
-    document.querySelector('#section').textContent = `Kanye's Food For Thought : ${r.quote}` 
-})
+//////********* Screen Toggle *//////
 
-//////******************** Screen Toggle *//////
+// login to location page
+function dispFunction() {
+    document.getElementById("locationPage").style.display = "block";
+    document.getElementById("loginPage").style.display = "none";
+    document.getElementById("navigation1").style.display = "none";
+    document.getElementById("navigation2").style.display = "block";
+    
+}
+
+// display main page
+function dispMainPage() {
+    document.getElementById("mainPage").style.display = "block";
+    document.getElementById("locationPage").style.display = "none";
+}
+// to favorites page
+function dispFaves() {
+    document.getElementById("favoritesPage").style.display = "block";
+    document.getElementById("mainPage").style.display = "none"; 
+    document.getElementById("locationPage").style.display = "none";
+
+}
+// back to location page
+function dispLocationPage() {
+    document.getElementById("locationPage").style.display = "block";
+    document.getElementById("mainPage").style.display = "none";
+    document.getElementById("favoritesPage").style.display = "none";
+
+}
+
 
 // login to location page
 function dispFunction() {
@@ -372,7 +416,3 @@ function dispLocationPage() {
     document.getElementById("favoritesPage").style.display = "none";
 
 }
-
-// heart animation
-
-/* when a user clicks, toggle the 'is-animating' class */

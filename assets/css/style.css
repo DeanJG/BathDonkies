@@ -41,18 +41,32 @@
 
 /* Login nav bar */
 #navigation1 {
-    display: none;
+    position: fixed;
+    top: 0;
+    width: 100%;
+}
+
+#heartNav {
+    color: black;
+}
+
+#locationNav {
+    color: black;
 }
 
 
 /* sign in page */
 #loginPage {
     background: url(../images/breakfast-eating-food-1861784.png);
-    height: 600px;
+    height: 736px;
     background-size: cover;
     background-position: center;
     /* display: none; */
 }
+.login {
+    margin: 10px;
+}
+
 .signInPage {
     text-align: center;
 }
@@ -68,7 +82,7 @@ h1{
     color:white;
     font-family: 'Poppins', sans-serif;
     font-weight: 600;
-    margin: 110px 20px 50px 20px;
+    margin: 120px 20px 70px 20px;
     font-size: 33px;
     
 }
@@ -91,7 +105,8 @@ h6 {
     
 }
 
-button {
+
+.social {
     background-color: rgba(0, 0, 0, 0);
     border: none;
 }
@@ -103,7 +118,7 @@ input {
     font-weight: 300;
     font-size: 16px;
     border: none;
-    width: 300px;
+    width: 340px;
     height: 40px;
     padding: 20px;
     border-radius: 10px;
@@ -124,7 +139,7 @@ input::placeholder{
 /* location page */
  #locationPage {
     background: url(../images/breakfast-eating-food-1861784.png);
-    height: 600px;
+    height: 736px;
     background-size: cover;
     background-position: center;
     display: none;
@@ -136,11 +151,16 @@ input::placeholder{
 
 .checkMark {
     text-align: center;
+    margin: 10px;
 }
 /* main nav bar */
 #navigation2 {
     padding: none;
-    /* display: none; */
+    display: none;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 4;
 
 }
 
@@ -157,7 +177,9 @@ input::placeholder{
 display: none;
 text-align: center;
 } 
-
+.card-url {
+    display: none;
+}
 .quoteDiv {
     text-align: center;
 }
@@ -187,23 +209,92 @@ text-align: center;
     letter-spacing: 1px;
     font-family: 'Poppins', sans-serif;
     font-weight: 600;
-    
 }
+
+#restImage {
+    height:200px;
+    object-fit:cover;
+}
+.saveBtn {
+    text-align: center;
+}
+
+.mainDivs {
+    padding-top: 4rem;
+}
+ #body {
+     margin-bottom: 4rem;
+ }
+
 /* Favorites Page  */
 #favoritesPage {
     display: none;
+}
+h3 {
+    color: #FF562E;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 600;
+    font-size: 20px;
 
-} 
-/* Inner Favorites Page */
-#innerFavoritesPage {
-    height: 200px;
-    display: none;
+}
 
-} 
+h4 {
+    color: black;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 400;
+    font-size: 15px;
+    letter-spacing: 1px;
+
+}
+p {
+    color: black;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 400;
+    font-size: 15px; 
+    margin: none;
+}
+.favorites {
+    text-align: center;
+}
+
+a {
+    color: #ff562e;
+    border: #FF562E 1px solid;
+    padding: 8px 15px 8px 15px;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 400;
+    font-size: 15px; 
+}
+
+a:hover {
+    background-color: #ff562e;
+    color: white;
+    border: #FF562E 1px solid;
+    padding: 8px 15px 8px 15px;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 400;
+    font-size: 15px; 
+    text-decoration: none;
+
+}
+
+
+
+hr {
+    margin: 40px 0px 20px 0px;
+}
+ 
+.favoritesDiv {
+    margin: 20px;
+}
+
 /* footer */
 .footer {
     background-color: #FF562E;
-    height:70px
+    height:70px;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
     }
 
 .footerBtn {
