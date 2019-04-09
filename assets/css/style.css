@@ -45,6 +45,7 @@
 }
 
 
+
 /* sign in page */
 #loginPage {
     background: url(../images/breakfast-eating-food-1861784.png);
@@ -157,7 +158,9 @@ input::placeholder{
 display: none;
 text-align: center;
 } 
-
+.card-url {
+    display: none;
+}
 .quoteDiv {
     text-align: center;
 }
@@ -192,18 +195,32 @@ text-align: center;
 /* Favorites Page  */
 #favoritesPage {
     display: none;
+}
+h3 {
+    color: #FF562E;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 600;
+    font-size: 25;
 
-} 
-/* Inner Favorites Page */
-#innerFavoritesPage {
-    height: 200px;
-    display: none;
+}
 
-} 
+h4 {
+    color: black;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 300;
+    font-size: 16;
+
+}
+.favorites {
+    text-align: center;
+}
+
+ 
+
 /* footer */
 .footer {
     background-color: #FF562E;
-    height:70px
+    height:70px;
     }
 
 .footerBtn {
