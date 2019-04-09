@@ -49,6 +49,16 @@ let coordinates = {}
 
 //Function Declaration//
 
+// function to call Kanye quote
+const kanyeQuote = _ => {
+    fetch(`https://api.kanye.rest`)
+        .then(r => r.json())
+        .then(r => {
+
+            document.querySelector('#section').textContent = `Kanye's Food For Thought : ${r.quote}`
+        })
+}
+
 // Function used for "x miles away" location tag
 const distFunc = (lat1, lon1, lat2, lon2) => {
     let pi = Math.PI
@@ -231,13 +241,15 @@ document.querySelector('.search').addEventListener(`click`, e => {
     // // variable to house city input
     city = document.getElementById(`locationInput`).value
 
+    kanyeQuote()
+
     if (city === ``) {
         console.log(`search coords`)
         console.log(coordinates)
         fetchNearbyBusinesses(coordinates.lat1, coordinates.lon1)
     }else {
         console.log(`search a city`)
-        console.log(`city`)
+        console.log(`${city}`)
         fetchNearbyBusinessesCity(city, coordinates.lat1, coordinates.lon1)
     }
 })
@@ -259,8 +271,10 @@ document.getElementById('addToFavorites').addEventListener('click', e => {
     .then(function() {
         console.log("Document successfully written!");
     })
-    // reruns city/coords search functions on "Favorites" press
+    // reruns city/coords search and Kanye quote functions on "Favorites" press
     city = document.getElementById(`locationInput`).value
+
+    kanyeQuote()
 
     if (city === ``) {
         console.log(`search coords`)
@@ -287,8 +301,10 @@ document.getElementById('notFavorite').addEventListener('click', e => {
     .then(function() {
         console.log("Document successfully written!");
     })
-    // reruns city/coords search functions on "Dislike" press
+    // reruns city/coords search and Kanye quote functions on "Dislike" press
     city = document.getElementById(`locationInput`).value
+
+    kanyeQuote()
 
     if (city === ``) {
         console.log(`search coords`)
@@ -317,17 +333,8 @@ db.collection('Favorites').onSnapshot(({ docs }) => {
     })
 })
 
-// kanye west API key fetch
-fetch(`https://api.kanye.rest`) 
-.then(r => r.json())
-.then(r => {
-    // console log r to show random quote from kanye west
-    // console.log(r)
 
-    document.querySelector('#section').textContent = `Kanye's Food For Thought : ${r.quote}` 
-})
-
-//////******************** Screen Toggle *//////
+//////********* Screen Toggle *//////
 
 // login to location page
 function dispFunction() {
