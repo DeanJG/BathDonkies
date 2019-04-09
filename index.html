@@ -32,12 +32,12 @@
 
 
   <!-- Login Page -->
-  <div class="container" id="loginPage">
+  <div class="container mainDivs" id="loginPage">
     <div class="row">
       <div id="header" class="col-sm">
         <h1>DISCOVER YOUR NEW FAVORITE EATERIES.</h1>
       </div>
-      <div id="body" class="col-sm">
+      <div id="body" class="col-sm loginForm">
         <div class="signInPage">
           <h2>Sign in</h2>
           <form type="text">
@@ -62,7 +62,7 @@
   </div>
 
   <!-- Location Page -->
-  <div class="container" id="locationPage">
+  <div class="container mainDivs" id="locationPage">
     <div class="row">
       <div id="body" class="col-sm-12 col-m-12 col-l-12">
         <div class="locationPage">
@@ -83,24 +83,24 @@
 
 
 
-  <div class="container" id="mainPage">
-<div class="quoteDiv">
+  <div class="container mainDivs" id="mainPage">
+    <div class="quoteDiv">
       <div class="container" id="kanyeDiv">
-          <div class="row">
-            <div id="kanye" class="col-3">
-              <div id="kanyePic">
-                <img src="assets/images/kanye.png">
-              </div>
+        <div class="row">
+          <div id="kanye" class="col-3">
+            <div id="kanyePic">
+              <img src="assets/images/kanye.png">
             </div>
-      
-      
-            <div id="section" class="col-9">
-              <div id="kanyeQuote">
-              </div>
+          </div>
+
+
+          <div id="section" class="col-9">
+            <div id="kanyeQuote">
             </div>
           </div>
         </div>
       </div>
+    </div>
     <div class="row">
       <div id="body" class="col-sm-12 col-m-12 col-l-12">
         <div class="card">
@@ -112,11 +112,12 @@
             <p class="card-transaction">Transactions</p>
             <p class="card-telephone">Telephone</p>
             <p class="card-url">url</p>
-
-            <button id="notFavorite" type="button" class="btn btn-warning btn-circle btn-xl"><i
-                class="fa fa-times"></i></button>
-            <button id="addToFavorites" type="button" class="btn btn-danger btn-circle btn-xl"><i
-                class="fa fa-heart"></i></button>
+            <div class="saveBtn">
+              <button id="notFavorite" type="button" class="btn btn-warning btn-circle btn-xl"><i
+                  class="fa fa-times"></i></button>
+              <button id="addToFavorites" type="button" class="btn btn-danger btn-circle btn-xl"><i
+                  class="fa fa-heart"></i></button>
+            </div>
           </div>
           <!-- </div> -->
         </div>
@@ -125,7 +126,7 @@
   </div>
 
   <!-- Favorites Page -->
-  <div class="container" id="favoritesPage">
+  <div class="container mainDivs" id="favoritesPage">
     <div class="row">
 
       <div id="body" class="col-sm-12 col-m-12 col-l-12">
@@ -176,8 +177,8 @@
           </div>
         </div>
         <div class=".col-6 footerBtn">
-          <button><img src="./assets/images/fb.png"></button>
-          <button><img src="./assets/images/insta.png"></button>
+          <button class="social"><img src="./assets/images/fb.png"></button>
+          <button class="social"><img src="./assets/images/insta.png"></button>
         </div>
       </div>
     </div>

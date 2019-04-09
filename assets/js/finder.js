@@ -317,14 +317,16 @@ document.getElementById('notFavorite').addEventListener('click', e => {
 db.collection('Favorites').onSnapshot(({ docs }) => {
     document.querySelector('.favorites').innerHTML = ''
     docs.forEach(doc => {
-        let { name, dollars, transaction, typeoffood, url } = doc.data()
+        let { name, dollars, typeoffood, url } = doc.data()
         let docElem = document.createElement('button')
         docElem.innerHTML = `
+        <div class="favoritesDiv">
             <h3>${name}</h3>
-            <h4>${dollars}</h4>
-            <h6>${transaction}</h6>
-            <h6>${typeoffood}</h6>
+            <h4>${typeoffood}</h4>
+            <p>${dollars}</p>
             <a href = "${url}"> GO HERE</a>
+            <hr>
+            </div>
             `
         document.querySelector('.favorites').append(docElem)
     })
