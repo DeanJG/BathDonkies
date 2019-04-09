@@ -27,6 +27,17 @@ Ambitions:
     Cool features with the Kanye West API 
 **/
 
+// heart animation
+/* when a user clicks, toggle the 'is-animating' class */
+$("#addToFavorites").on('click touchstart', function(){
+    $(this).toggleClass('is_animating')
+})
+  
+ /*when the animation is over, remove the class*/
+$("#addToFavorites").on('animationend', function(){
+     $(this).toggleClass('is_animating')
+    })
+
 // Initialize Firebase
 const config = {
     apiKey: "AIzaSyBXbVZnjOTHkSxkaB5ni4BM5T-xp8ghizQ",
@@ -140,7 +151,6 @@ const fetchNearbyBusinesses = (lat1, lon1) => {
                     .join(' ')
 
                 document.querySelector('.card-type').textContent = `Type of food: ${categories}`
-
             }
         })
         .catch(e => console.error(e))
@@ -223,6 +233,13 @@ navigator.geolocation.getCurrentPosition((position) => {
     return coordinates
 })
 
+    // user's location
+    coordinates = {
+        lat1: latitude,
+        lon1: longitude
+    }
+    return coordinates
+})
 
 
 // prevents enter key default
@@ -255,7 +272,7 @@ document.querySelector('.search').addEventListener(`click`, e => {
 //adding to firebase favorite
 document.getElementById('addToFavorites').addEventListener('click', e => {
     e.preventDefault()
-
+    document.querySelector("#heartImage").style.display = "block"
     db.collection("Favorites").doc(document.querySelector('.card-title').textContent).set({
         name: document.querySelector('.card-title').textContent,
         typeoffood: document.querySelector('.card-type').textContent,
@@ -265,9 +282,13 @@ document.getElementById('addToFavorites').addEventListener('click', e => {
         url: document.querySelector('.card-url').textContent,
     })
     .then(function() {
+        //stops heart animation
+        setTimeout(() => {
+            document.querySelector("#heartImage").style.display = "none"
+        }, 1000)
         console.log("Document successfully written!");
     })
-    // reruns city/coords search and Kanye quote functions on "Favorites" press
+    // reruns city/coords search functions on "Favorites" press
     city = document.getElementById(`locationInput`).value
 
     kanyeQuote()
@@ -365,4 +386,33 @@ function dispLocationPage() {
 }
 
 
+// login to location page
+function dispFunction() {
+    //display
+    document.getElementById("locationPage").style.display = "block";
+    //hide
+    document.getElementById("loginPage").style.display = "none";
+    
+}
 
+// display main page
+function dispMainPage() {
+    //display
+    document.getElementById("mainPage").style.display = "block";
+    // hide
+    document.getElementById("locationPage").style.display = "none";
+}
+// to favorites page
+function dispFaves() {
+    document.getElementById("favoritesPage").style.display = "block";
+    document.getElementById("mainPage").style.display = "none"; 
+    document.getElementById("locationPage").style.display = "none";
+
+}
+// back to location page
+function dispLocationPage() {
+    document.getElementById("locationPage").style.display = "block";
+    document.getElementById("mainPage").style.display = "none";
+    document.getElementById("favoritesPage").style.display = "none";
+
+}

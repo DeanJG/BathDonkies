@@ -54,6 +54,7 @@
     color: black;
 }
 
+
 /* sign in page */
 #loginPage {
     background: url(../images/breakfast-eating-food-1861784.png);
@@ -65,6 +66,7 @@
 .login {
     margin: 10px;
 }
+
 .signInPage {
     text-align: center;
 }
@@ -102,6 +104,7 @@ h6 {
     margin: 2px 0px 1px 0px;
     
 }
+
 
 .social {
     background-color: rgba(0, 0, 0, 0);
@@ -300,6 +303,40 @@ hr {
 #footerlogo{
     margin: 10px auto 10px 20px;
     }    
+
+/* Heart animation */
+#addToFavorites {
+    cursor: pointer;
+    height: 70px;
+    width: 70px;
+    background-image:url('https://abs.twimg.com/a/1446542199/img/t1/web_heart_animation.png');
+    background-position: left;
+    background-repeat:no-repeat;
+    background-size:2900%;
+    }
+      
+#addToFavorites:hover {
+    background-position:right;
+    }
+      
+.is_animating {
+    animation: heart-burst 1s steps(28) 1;
+    -webkit-animation: heart-burst 1s steps(28) 1;
+}
+      
+@keyframes heart-burst {
+    from {background-position:left;}
+    to {background-position:right;}
+}
+
+#heartImage {
+    height: 100px;
+    width: 100px;
+    position: absolute;
+    margin-left: auto;
+    margin-right: auto;
+    display: none
+}
 
 
 
