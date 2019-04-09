@@ -46,7 +46,13 @@
     width: 100%;
 }
 
+#heartNav {
+    color: black;
+}
 
+#locationNav {
+    color: black;
+}
 
 /* sign in page */
 #loginPage {
