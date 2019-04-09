@@ -21,91 +21,129 @@
 </head>
 
 <body>
+  <!-- Login Nav Page -->
+  <div id="navigation1">
+    <nav class="navbar nav">
+      <button></i></button>
+      <img src="assets/images/findeer1.png">
+      <button class="currentLocation navButton"></i></button>
+    </nav>
+  </div>
+
+
+  <!-- Login Page -->
+  <div class="container" id="loginPage">
+    <div class="row">
+      <div id="header" class="col-sm">
+        <h1>DISCOVER YOUR NEW FAVORITE EATERIES.</h1>
+      </div>
+      <div id="body" class="col-sm">
+        <div class="signInPage">
+          <h2>Sign in</h2>
+          <form type="text">
+            <input type="text" placeholder="Username">
+            <input type="text" placeholder="Password">
+          </form>
+          <button class='login' onclick="dispFunction()">
+            <img src="./assets/images/checksmall.png"></button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Main Nav Page -->
+  <div id="navigation2">
+    <nav class="navbar nav">
+      <button onclick="dispLocationPage()" class="currentLocation"><i class="fas fa-map-marker-alt"></i></button>
+      <img src="assets/images/findeer1.png">
+      <button onclick="dispFaves()" class=heart><i class="fas fa-star"></i></button>
+
+    </nav>
+  </div>
 
   <!-- Location Page -->
   <div class="container" id="locationPage">
     <div class="row">
-      <div id="navigation" class="col-sm-12 col-m-12 col-l-12">
-        <nav class="navbar navbar-dark bg-dark">
-          <button><i class="fas fa-star"></i></button>
-          <button class="currentLocation"><i class="fas fa-map-marker-alt"></i></button>
-        </nav>
-      </div>
       <div id="body" class="col-sm-12 col-m-12 col-l-12">
         <div class="locationPage">
           <h1>Where would you like to eat?</h1>
-          <form type="text">
-            <input type="text" name="location" value="Current Location">
-          </form>
-          <button class="search">Lets Go</button>
-        </div>
-      </div>
-      <div id="footer" class="col-sm-12 col-m-12 col-l-12">
-        <div id="kanyeQuote">
+          <div class="locationForm">
+            <form type="text">
+              <input type="text" id="locationInput" name="location" placeholder="Current Location">
+            </form>
+            <button class="search" onclick="dispMainPage()">
+              <img class="checkMark" src="./assets/images/checksmall.png"> </button>
+          </div>
         </div>
       </div>
     </div>
   </div>
 
   <!-- Main Page showing randomized Restaurants -->
+
+
+
   <div class="container" id="mainPage">
-    <div class="row">
-      <div id="navigation" class="col-sm-12 col-m-12 col-l-12">
-        <nav class="navbar navbar-dark bg-dark">
-          <button><i class="fas fa-star"></i></button>
-          <button class="currentLocation"><i class="fas fa-map-marker-alt"></i></button>
-        </nav>
-        <div id="section" class="col-sm-12 col-m-12 col-l-12">
-          <div id="kanyeQuote">
+<div class="quoteDiv">
+      <div class="container" id="kanyeDiv">
+          <div class="row">
+            <div id="kanye" class="col-3">
+              <div id="kanyePic">
+                <img src="assets/images/kanye.png">
+              </div>
+            </div>
+      
+      
+            <div id="section" class="col-9">
+              <div id="kanyeQuote">
+              </div>
+            </div>
           </div>
         </div>
-        <div id="body" class="col-sm-12 col-m-12 col-l-12">
-        <div class="card" style="width: 18rem;">
-
-          <img class="card-img-top" src="#" alt="Card image cap">
+      </div>
+    <div class="row">
+      <div id="body" class="col-sm-12 col-m-12 col-l-12">
+        <div class="card">
+          <img id="heartImage" class="card-img-top" src="assets/images/heart.gif" alt="Card image cap">
+          <img id="restImage" class="card-img-top" src="#" alt="Card image cap">
           <div class="card-body">
             <h5 class="card-title">Restaurant Name</h5>
             <p class="card-type">Type of food</p>
-            <p class="card-text">Price Point</p>
-            <p class="card-text">Transactions</p>
-            <button type="button" class="url">Click Here for More Information</button>
+            <p class="card-price">Price Point</p>
+            <p class="card-transaction">Transactions</p>
+            <p class="card-telephone">Telephone</p>
+            <p class="card-url">url</p>
 
-            <button type="button" class="btn btn-warning btn-circle btn-xl"><i class="fa fa-times"></i></button>
-          <button type="button" class="btn btn-danger btn-circle btn-xl"><i class="fa fa-heart"></i></button>
+            <button id='buttonUrl' target="_blank">Click me</button>
+            <button id="notFavorite" type="button" class="btn btn-warning btn-circle btn-xl"><i
+                class="fa fa-times"></i></button>
+            <button id="addToFavorites" type="button" class="btn btn-light btn-circle btn-xl"></button>
           </div>
+          <!-- </div> -->
         </div>
-      </div> 
+      </div>
     </div>
   </div>
 
   <!-- Favorites Page -->
   <div class="container" id="favoritesPage">
     <div class="row">
-      <div id="navigation" class="col-sm-12 col-m-12 col-l-12">
-        <nav class="navbar navbar-dark bg-dark">
-          <button><i class="fas fa-star"></i></button>
-          <button class="currentLocation"><i class="fas fa-map-marker-alt"></i></button>
-        </nav>
-      </div>
+
       <div id="body" class="col-sm-12 col-m-12 col-l-12">
         <div class="favorites">
-          <button type="button" class="btn btn-primary btn-lg btn-block">Place 1</button>
-          <button type="button" class="btn btn-primary btn-lg btn-block">Place 2</button>
-          <button type="button" class="btn btn-primary btn-lg btn-block">Place 3</button>
-          <button type="button" class="btn btn-primary btn-lg btn-block">Place 4</button>
-          <button type="button" class="btn btn-primary btn-lg btn-block">Place 5</button>
+
         </div>
       </div>
     </div>
   </div>
 
   <!-- Inner Favorites Page -->
-  <div class="container" id="innerFavoritesPage">
+  <!-- <div class="container" id="innerFavoritesPage">
     <div class="row">
       <div id="navigation" class="col-sm-12 col-m-12 col-l-12">
         <nav class="navbar navbar-dark bg-dark">
-          <button><i class="fas fa-star"></i></button>
-          <button class="currentLocation"><i class="fas fa-map-marker-alt"></i></button>
+          <button onclick="dispFaves()"><i class="fas fa-star"></i></button>
+          <button onclick="dispLocationPage()" class="currentLocation"><i class="fas fa-map-marker-alt"></i></button>
         </nav>
       </div>
       <div id="body" class="col-sm-12 col-m-12 col-l-12">
@@ -122,10 +160,29 @@
         </div>
       </div>
     </div>
-  </div>
+  </div> -->
 
+  <!-- Footer Page -->
+  <footer class="page-footer footer">
+    <div class="container">
+      <div class="row">
+        <div class="col">
+          <div id="footerlogo"><img src="./assets/images/logowhite.png">
+            <h6>All rights reserved.</h6>
+          </div>
+        </div>
+        <div class=".col-6 footerBtn">
+          <button><img src="./assets/images/fb.png"></button>
+          <button><img src="./assets/images/insta.png"></button>
+        </div>
+      </div>
+    </div>
+  </footer>
 
   <!-- Script links -->
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
   <script src="https://www.gstatic.com/firebasejs/5.9.2/firebase.js"></script>
   <script src="./assets/js/finder.js"></script>
 </body>
