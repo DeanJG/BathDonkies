@@ -232,15 +232,6 @@ navigator.geolocation.getCurrentPosition((position) => {
     return coordinates
 })
 
-    // user's location
-    coordinates = {
-        lat1: latitude,
-        lon1: longitude
-    }
-    return coordinates
-})
-
-
 // prevents enter key default
 document.querySelector(`#locationInput`).addEventListener(`keydown`, e => {
     if (e.keyCode === 13) {
