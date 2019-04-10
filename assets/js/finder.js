@@ -54,7 +54,6 @@ const kanyeQuote = _ => {
     fetch(`https://api.kanye.rest`)
         .then(r => r.json())
         .then(r => {
-
             document.querySelector('#section').textContent = `Kanye's Food For Thought : ${r.quote}`
         })
 }
