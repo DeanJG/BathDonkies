@@ -129,7 +129,7 @@ input {
 input::placeholder{
     color: black;
     font-family: 'Poppins', sans-serif;
-    font-weight: 300;
+    font-weight: 400;
     letter-spacing: 1px;
   }
 
@@ -230,10 +230,34 @@ text-align: center;
 }
 #addToFavorites {
     margin-left: 20px;
+    background-color: #FF562E;
+    border: none;
 }
 #notFavorite {
     margin-right: 20px;
+    background-color: black;
+    border: none;
 }
+
+
+#kanyeQuoteTitle {
+    color: #FF562E;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 600;
+    margin: 0px 0px 0px 0px;
+}
+
+#kanyeQuote {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 400;
+    font-size: 14px;
+}
+
+#kanyePic {
+    padding-bottom: 10px;
+}
+
+
 
 /* Favorites Page  */
 #favoritesPage {
