@@ -8,7 +8,7 @@
     color: #00bfb6;
     font-family: arial;
     position: relative;
-  }
+}
 
 /* button css */
 .btn-circle.btn-xl {
@@ -46,11 +46,9 @@
     width: 100%;
     z-index: 4;
 }
-
 #heartNav {
     color: black;
 }
-
 #locationNav {
     color: black;
 }
@@ -62,30 +60,24 @@
     height: 736px;
     background-size: cover;
     background-position: center;
-    /* display: none; */
 }
-.login {
+#login {
     margin: 10px;
 }
-
-.signInPage {
+#signInPage {
     text-align: center;
 }
-
 .nav {
     background-color: black;
     height: 4rem;
 }
-
-h1{
+h1 {
     color:white;
     font-family: 'Poppins', sans-serif;
     font-weight: 600;
     margin: 120px 20px 70px 20px;
     font-size: 33px;
-    
 }
-
 h2 {
     color: white;
     font-family: 'Poppins', sans-serif;
@@ -101,15 +93,11 @@ h6 {
     font-size: 12px;
     letter-spacing: 1px;
     margin: 2px 0px 1px 0px;
-    
 }
-
-
 .social {
     background-color: rgba(0, 0, 0, 0);
     border: none;
 }
-
 input {
     background-color: rgba(255, 255, 255, 0.6);
     margin: 0px 0px 8px 0px;
@@ -131,27 +119,24 @@ input::placeholder{
     font-family: 'Poppins', sans-serif;
     font-weight: 400;
     letter-spacing: 1px;
-  }
-
-
+}
 
 /* location page */
- #locationPage {
+#locationPage {
     background: url(../images/breakfast-eating-food-1861784.png);
     height: 736px;
     background-size: cover;
     background-position: center;
     display: none;
 } 
-
-.locationForm {
+#locationForm {
     text-align: center;
 }
-
-.checkMark {
+#checkMark {
     text-align: center;
     margin: 10px;
 }
+
 /* main nav bar */
 #navigation2 {
     padding: none;
@@ -160,14 +145,11 @@ input::placeholder{
     top: 0;
     width: 100%;
     z-index: 4;
-
 }
-
 .currentLocation {
     color: white;
 }
-
-.heart {
+.fave {
     color: white;
 }
 
@@ -179,52 +161,42 @@ text-align: center;
 .card-url {
     display: none;
 }
-.quoteDiv {
+#quoteDiv {
     text-align: center;
+    margin: 30px 0px 0px 0px;
 }
-
 .card {
     margin: 0px 0px 20px 0px;
 }
-
-.quoteDiv {
-    margin: 30px 0px 0px 0px;
-}
-
-#section {
+#quoteSection {
     
     font-family: 'Poppins', sans-serif;
     font-weight: 300;
     font-size: 14px;
     text-align: left;
 }
-
 .card-body {
     text-align: left;
 }
-
 .card-title {
     color: #FF562E;
     letter-spacing: 1px;
     font-family: 'Poppins', sans-serif;
     font-weight: 600;
 }
-
 #restImage {
     height:200px;
     object-fit:cover;
 }
-.saveBtn {
+#saveBtn {
     text-align: center;
 }
-
 .mainDivs {
     padding-top: 4rem;
 }
- #body {
+.body {
      margin-bottom: 4rem;
 }
-
 #kanye {
     align-items: baseline;
 }
@@ -238,26 +210,20 @@ text-align: center;
     background-color: black;
     border: none;
 }
-
-
 #kanyeQuoteTitle {
     color: #FF562E;
     font-family: 'Poppins', sans-serif;
     font-weight: 600;
     margin: 0px 0px 0px 0px;
 }
-
 #kanyeQuote {
     font-family: 'Poppins', sans-serif;
     font-weight: 400;
     font-size: 14px;
 }
-
 #kanyePic {
     padding-bottom: 10px;
 }
-
-
 
 /* Favorites Page  */
 #favoritesPage {
@@ -270,7 +236,6 @@ h3 {
     font-size: 20px;
 
 }
-
 h4 {
     color: black;
     font-family: 'Poppins', sans-serif;
@@ -286,10 +251,9 @@ p {
     font-size: 15px; 
     margin: none;
 }
-.favorites {
+#favorites {
     text-align: center;
 }
-
 a {
     color: #ff562e;
     border: #FF562E 1px solid;
@@ -298,7 +262,6 @@ a {
     font-weight: 400;
     font-size: 15px; 
 }
-
 a:hover {
     background-color: #ff562e;
     color: white;
@@ -310,13 +273,9 @@ a:hover {
     text-decoration: none;
 
 }
-
-
-
 hr {
     margin: 40px 0px 20px 0px;
 }
- 
 .favoritesDiv {
     margin: 20px;
 }
@@ -328,14 +287,13 @@ hr {
     position: fixed;
     bottom: 0;
     width: 100%;
-    }
-
-.footerBtn {
+}
+#footerBtns {
     margin: auto 20px auto 10px;
-    }
+}
 #footerlogo{
     margin: 10px auto 10px 20px;
-    }    
+}    
 
 /* Heart animation */
 #addToFavorites {
@@ -346,22 +304,18 @@ hr {
     background-position: left;
     background-repeat:no-repeat;
     background-size:2900%;
-    }
-      
+}   
 #addToFavorites:hover {
     background-position:right;
-    }
-      
+}  
 .is_animating {
     animation: heart-burst 1s steps(28) 1;
     -webkit-animation: heart-burst 1s steps(28) 1;
-}
-      
+}   
 @keyframes heart-burst {
     from {background-position:left;}
     to {background-position:right;}
 }
-
 #heartImage {
     height: 100px;
     width: 100px;
@@ -370,7 +324,3 @@ hr {
     margin-right: auto;
     display: none
 }
-
-
-
-

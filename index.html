@@ -24,29 +24,33 @@
   <!-- Login Nav Page -->
   <div id="navigation1">
     <nav class="navbar nav">
-      <button id='locationNav' onclick="dispLocationPage()" class="currentLocation"><i
-          class="fas fa-map-marker-alt fa-2x"></i></button>
-      <img src="assets/images/findeer1.png">
-      <button id='heartNav' onclick="dispFaves()" class=heart><i class="fas fa-star fa-2x"></i></button>
+      <button id="locationNav" onclick="dispLocationPage()" class="currentLocation">
+        <i class="fas fa-map-marker-alt fa-2x"></i>
+      </button>
+      <img src="assets/images/finder1.png">
+      <button id="heartNav" onclick="dispFaves()" class="fave">
+        <i class="fas fa-star fa-2x"></i>
+      </button>
     </nav>
   </div>
 
   <!-- Login Page -->
   <div class="container mainDivs" id="loginPage">
     <div class="row">
-      <div id="header" class="col-sm">
+      <div id="loginHeader" class="col-sm">
         <h1>DISCOVER YOUR NEW FAVORITE EATERIES.</h1>
       </div>
 
-      <div id="body" class="col-sm loginForm">
-        <div class="signInPage">
+      <div id="loginForm" class="col-sm body">
+        <div id="signInPage">
           <h2>Sign in</h2>
           <form type="text">
-            <input type="text" placeholder="Username">
+            <input type="text" placeholder="Email">
             <input type="text" placeholder="Password">
           </form>
-          <button class='login' onclick="dispFunction()">
-            <img src="./assets/images/checksmall.png"></button>
+          <button id="login" onclick="dispFunction()">
+            <img src="./assets/images/checksmall.png">
+          </button>
         </div>
       </div>
     </div>
@@ -55,24 +59,29 @@
   <!-- Main Nav Page -->
   <div id="navigation2">
     <nav class="navbar nav">
-      <button onclick="dispLocationPage()" class="currentLocation"><i class="fas fa-map-marker-alt fa-2x"></i></button>
-      <img src="assets/images/findeer1.png">
-      <button onclick="dispFaves()" class="heart"><i class="fas fa-star fa-2x"></i></button>
+      <button onclick="dispLocationPage()" class="currentLocation">
+        <i class="fas fa-map-marker-alt fa-2x"></i>
+      </button>
+      <img src="assets/images/finder1.png">
+      <button onclick="dispFaves()" class="fave">
+        <i class="fas fa-star fa-2x"></i>
+      </button>
     </nav>
   </div>
 
   <!-- Location Page -->
   <div class="container mainDivs" id="locationPage">
     <div class="row">
-      <div id="body" class="col-sm-12 col-m-12 col-l-12">
-        <div class="locationPage">
+      <div class="body col-sm-12 col-m-12 col-l-12">
+        <div>
           <h1>Where would you like to eat?</h1>
-          <div class="locationForm">
+          <div id="locationForm">
             <form type="text">
               <input type="text" id="locationInput" name="location" placeholder="Current Location">
             </form>
-            <button class="search" onclick="dispMainPage()">
-              <img class="checkMark" src="./assets/images/checksmall.png"> </button>
+            <button id="search" onclick="dispMainPage()">
+              <img id="checkMark" src="./assets/images/checksmall.png">
+            </button>
           </div>
         </div>
       </div>
@@ -82,7 +91,7 @@
   <!-- Main Page showing randomized Restaurants -->
 
   <div class="container mainDivs" id="mainPage">
-    <div class="quoteDiv">
+    <div id="quoteDiv">
       <div class="container" id="kanyeDiv">
         <div class="row">
           <div id="kanye" class="col-3">
@@ -91,17 +100,17 @@
             </div>
           </div>
 
-          <div id="section" class="col-9">
-              <div>
-                <p id="kanyeQuoteTitle">KANYE'S FOOD FOR THOUGHT</p>
-                <p id="kanyeQuote"></p>
-              </div>
+          <div id="quoteSection" class="col-9">
+            <div>
+              <p id="kanyeQuoteTitle">KANYE'S FOOD FOR THOUGHT</p>
+              <p id="kanyeQuote"></p>
             </div>
           </div>
         </div>
       </div>
+    </div>
     <div class="row">
-      <div id="body" class="col-sm-12 col-m-12 col-l-12">
+      <div class="body col-sm-12 col-m-12 col-l-12">
         <div class="card">
           <img id="heartImage" class="card-img-top" src="assets/images/heart.gif" alt="Card image cap">
           <img id="restImage" class="card-img-top" src="#" alt="Card image cap">
@@ -112,14 +121,15 @@
             <p class="card-transaction">Transactions</p>
             <p class="card-telephone">Telephone</p>
             <p class="card-url">url</p>
-            <div class="saveBtn">
-              <button id="notFavorite" type="button" class="btn btn-danger btn-circle btn-xl"><i
-                  class="fa fa-times"></i></button>
-              <button id="addToFavorites" type="button" class="btn btn-danger btn-circle btn-xl"><i
-                  class="fa fa-heart"></i></button>
+            <div id="saveBtn">
+              <button id="notFavorite" type="button" class="btn btn-danger btn-circle btn-xl">
+                <i class="fa fa-times"></i>
+              </button>
+              <button id="addToFavorites" type="button" class="btn btn-danger btn-circle btn-xl">
+                <i class="fa fa-heart"></i>
+              </button>
             </div>
           </div>
-          <!-- </div> -->
         </div>
       </div>
     </div>
@@ -128,9 +138,8 @@
   <!-- Favorites Page -->
   <div class="container mainDivs" id="favoritesPage">
     <div class="row">
-
-      <div id="body" class="col-sm-12 col-m-12 col-l-12">
-        <div class="favorites">
+      <div class="body col-sm-12 col-m-12 col-l-12">
+        <div id="favorites">
 
         </div>
       </div>
@@ -138,33 +147,32 @@
   </div>
 
 
-  <!-- Footer Page -->
+  <!-- Page Footer -->
   <footer class="page-footer footer">
     <div class="container">
       <div class="row">
         <div class="col">
-          <div id="footerlogo"><img src="./assets/images/logowhite.png">
+          <div id="footerLogo">
+            <img src="./assets/images/logowhite.png">
             <h6>All rights reserved.</h6>
           </div>
         </div>
-        <div class=".col-6 footerBtn">
-          <button class="social"><img src="./assets/images/fb.png"></button>
-          <button class="social"><img src="./assets/images/insta.png"></button>
+        <div id="footerBtns" class=".col-6">
+          <button class="social">
+            <img src="./assets/images/fb.png">
+          </button>
+          <button class="social">
+            <img src="./assets/images/insta.png">
+          </button>
         </div>
       </div>
     </div>
   </footer>
 
   <!-- Script links -->
-  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
-    integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
-    crossorigin="anonymous"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
-    integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
-    crossorigin="anonymous"></script>
-  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
-    integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
-    crossorigin="anonymous"></script>
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
   <script src="https://www.gstatic.com/firebasejs/5.9.2/firebase.js"></script>
   <script src="./assets/js/finder.js"></script>
 </body>
