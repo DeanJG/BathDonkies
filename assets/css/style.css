@@ -44,6 +44,7 @@
     position: fixed;
     top: 0;
     width: 100%;
+    z-index: 4;
 }
 
 #heartNav {
@@ -76,8 +77,6 @@
     height: 4rem;
 }
 
-.navButton {
-color: white;}
 h1{
     color:white;
     font-family: 'Poppins', sans-serif;
@@ -224,7 +223,17 @@ text-align: center;
 }
  #body {
      margin-bottom: 4rem;
- }
+}
+
+#kanye {
+    align-items: baseline;
+}
+#addToFavorites {
+    margin-left: 20px;
+}
+#notFavorite {
+    margin-right: 20px;
+}
 
 /* Favorites Page  */
 #favoritesPage {
