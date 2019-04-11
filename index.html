@@ -24,7 +24,8 @@
   <!-- Login Nav Page -->
   <div id="navigation1">
     <nav class="navbar nav">
-      <button id = 'locationNav' onclick="dispLocationPage()" class="currentLocation"><i class="fas fa-map-marker-alt fa-2x"></i></button>
+      <button id='locationNav' onclick="dispLocationPage()" class="currentLocation"><i
+          class="fas fa-map-marker-alt fa-2x"></i></button>
       <img src="assets/images/findeer1.png">
       <button id='heartNav' onclick="dispFaves()" class=heart><i class="fas fa-star fa-2x"></i></button>
     </nav>
@@ -90,14 +91,15 @@
             </div>
           </div>
 
-
           <div id="section" class="col-9">
-            <div id="kanyeQuote">
+              <div>
+                <p id="kanyeQuoteTitle">KANYE'S FOOD FOR THOUGHT</p>
+                <p id="kanyeQuote"></p>
+              </div>
             </div>
           </div>
         </div>
       </div>
-    </div>
     <div class="row">
       <div id="body" class="col-sm-12 col-m-12 col-l-12">
         <div class="card">
@@ -111,7 +113,7 @@
             <p class="card-telephone">Telephone</p>
             <p class="card-url">url</p>
             <div class="saveBtn">
-              <button id="notFavorite" type="button" class="btn btn-warning btn-circle btn-xl"><i
+              <button id="notFavorite" type="button" class="btn btn-danger btn-circle btn-xl"><i
                   class="fa fa-times"></i></button>
               <button id="addToFavorites" type="button" class="btn btn-danger btn-circle btn-xl"><i
                   class="fa fa-heart"></i></button>
@@ -154,9 +156,15 @@
   </footer>
 
   <!-- Script links -->
-  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
-  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+    integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+    crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+    integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+    crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+    integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+    crossorigin="anonymous"></script>
   <script src="https://www.gstatic.com/firebasejs/5.9.2/firebase.js"></script>
   <script src="./assets/js/finder.js"></script>
 </body>
