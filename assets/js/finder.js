@@ -1,43 +1,3 @@
-/**  create authentication page
-    when they move on from authenitcation page, set display : none
-
-If unique id is contained in rejectArray or favoriteArray, do not display/repeat this restaurant 
-When no is clicked: 
-    Repeating original call function of generating random place 
-    Pushes the current id to a rejectArray 
-    Then generating a new restaurant with the math.floor function 
-    Call a new Kanye quote 
-
-When yes is clicked: 
-    Add into favorites with +1 showing up 
-    Pushes the liked restaurant/id to the favoriteArray 
-    Then generate a new restuarant with the math.floor function
-    Call a new Kanye quote 
-
-When favorites is clicked:
-    Generate list of favoriteArray restaurants 
-    Create back button to go back button/find a swiping action to go back
-    
-When you click individual restaurants in favorites: 
-    Generate the information page about the restaurant with the yelp API 
-    Create back button to go back button/find a swiping action to go back
-
-Ambitions: 
-    Add in preferences for user to choose what type of restaurants they want to see/match with 
-    Cool features with the Kanye West API 
-**/
-
-// heart animation
-/* when a user clicks, toggle the 'is-animating' class */
-$("#addToFavorites").on('click touchstart', function(){
-    $(this).toggleClass('is_animating')
-})
-  
- /*when the animation is over, remove the class*/
-$("#addToFavorites").on('animationend', function(){
-     $(this).toggleClass('is_animating')
-    })
-
 // Initialize Firebase
 const config = {
     apiKey: "AIzaSyBXbVZnjOTHkSxkaB5ni4BM5T-xp8ghizQ",
@@ -50,8 +10,17 @@ const config = {
 firebase.initializeApp(config);
 
 let db = firebase.firestore()
-// const auth = firebase.auth()
 
+// heart animation
+/* when a user clicks, toggle the 'is-animating' class */
+$("#addToFavorites").on('click touchstart', function(){
+    $(this).toggleClass('is_animating')
+})
+  
+ /*when the animation is over, remove the class*/
+$("#addToFavorites").on('animationend', function(){
+     $(this).toggleClass('is_animating')
+})
 
 //Variable Declaration//
 let coordinates = {}
@@ -109,6 +78,7 @@ const fetchNearbyBusinesses = (lat1, lon1) => {
             let ratingThreshold = 2.5
             let randBusiness = r.businesses[randRest]
             counter++
+            // filter for 2.5+ ratings
             if (randBusiness.rating >= ratingThreshold) {
                 return randBusiness
             }else {
@@ -141,8 +111,6 @@ const fetchNearbyBusinesses = (lat1, lon1) => {
                 document.querySelector('.card-telephone').textContent = `${highRatedRest.display_phone}`
                 document.querySelector('.card-url').textContent = `${highRatedRest.url}`
 
-
-
                 // .map returns a new array for us 
                 // .join(' ') joins array and separates with a space
                 const categories = highRatedRest.categories
@@ -163,8 +131,7 @@ const fetchNearbyBusinessesCity = (city, lat1, lon1) => {
           Authorization:
             "Bearer CYpONbq3tuPRivns5oh_FenCfkuVArzigVu7ay4XjSaw1vOOZjWIgvQ7lPiyMRvXF2vlajmHLfHWqCUCBAKPVssu1NVAfDhuv9cHwFNwz8rgYI4W5FIg2DRY-CWcXHYx"
         }
-      }
-    )
+    })
     .then(r => r.json())
     .then(r => {
         // random number generator for restaurant selection
@@ -240,7 +207,7 @@ document.querySelector(`#locationInput`).addEventListener(`keydown`, e => {
 })
 
 // differentiates which fetch request to run
-document.querySelector('.search').addEventListener(`click`, e => {
+document.querySelector('#search').addEventListener(`click`, e => {
     // // variable to house city input
     city = document.getElementById(`locationInput`).value
 
@@ -326,20 +293,20 @@ document.getElementById('notFavorite').addEventListener('click', e => {
     
 //showing favorites(DOM)
 db.collection('Favorites').onSnapshot(({ docs }) => {
-    document.querySelector('.favorites').innerHTML = ''
+    document.querySelector('#favorites').innerHTML = ''
     docs.forEach(doc => {
         let { name, dollars, typeoffood, url } = doc.data()
         let docElem = document.createElement('button')
         docElem.innerHTML = `
-        <div class="favoritesDiv">
+            <div class="favoritesDiv">
             <h3>${name}</h3>
             <h4>${typeoffood}</h4>
             <p>${dollars}</p>
-            <a href = "${url}"> GO HERE</a>
+            <a href="${url}">GO HERE</a>
             <hr>
             </div>
             `
-        document.querySelector('.favorites').append(docElem)
+        document.querySelector('#favorites').append(docElem)
     })
 })
 
@@ -352,7 +319,6 @@ function dispFunction() {
     document.getElementById("loginPage").style.display = "none";
     document.getElementById("navigation1").style.display = "none";
     document.getElementById("navigation2").style.display = "block";
-    
 }
 
 // display main page
@@ -360,18 +326,17 @@ function dispMainPage() {
     document.getElementById("mainPage").style.display = "block";
     document.getElementById("locationPage").style.display = "none";
 }
+
 // to favorites page
 function dispFaves() {
     document.getElementById("favoritesPage").style.display = "block";
     document.getElementById("mainPage").style.display = "none"; 
     document.getElementById("locationPage").style.display = "none";
-
 }
+
 // back to location page
 function dispLocationPage() {
     document.getElementById("locationPage").style.display = "block";
     document.getElementById("mainPage").style.display = "none";
     document.getElementById("favoritesPage").style.display = "none";
-
 }
-
