@@ -375,34 +375,3 @@ function dispLocationPage() {
 
 }
 
-
-// login to location page
-function dispFunction() {
-    //display
-    document.getElementById("locationPage").style.display = "block";
-    //hide
-    document.getElementById("loginPage").style.display = "none";
-    
-}
-
-// display main page
-function dispMainPage() {
-    //display
-    document.getElementById("mainPage").style.display = "block";
-    // hide
-    document.getElementById("locationPage").style.display = "none";
-}
-// to favorites page
-function dispFaves() {
-    document.getElementById("favoritesPage").style.display = "block";
-    document.getElementById("mainPage").style.display = "none"; 
-    document.getElementById("locationPage").style.display = "none";
-
-}
-// back to location page
-function dispLocationPage() {
-    document.getElementById("locationPage").style.display = "block";
-    document.getElementById("mainPage").style.display = "none";
-    document.getElementById("favoritesPage").style.display = "none";
-
-}
