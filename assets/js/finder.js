@@ -99,10 +99,10 @@ const fetchNearbyBusinesses = (lat1, lon1) => {
 
                 if (distance < 1) {
                     // shows distance in decimals if between 0 and 1
-                    console.log(`${highRatedRest.name} is ~ ${distance.toFixed(2)} Miles Away`)
+                    document.querySelector(`.card-subtitle`).innerHTML = `~ ${distance.toFixed(2)} Miles Away`
                 } else {
                     // shows rounded distance otherwise
-                    console.log(`${highRatedRest.name} is ~ ${Math.round(distance)} Miles Away`)
+                    document.querySelector(`.card-subtitle`).innerHTML = `~ ${Math.round(distance)} Miles Away`
                 }
                 document.getElementById('restImage').src = `${highRatedRest.image_url}`
                 document.querySelector('.card-title').textContent = `${highRatedRest.name}`
